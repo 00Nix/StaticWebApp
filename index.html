@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>Justice League | Character Gallery</h1>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search by name..." onkeyup="searchCharacters()">
+    </div>
     <div id="gallery">
         <!-- Character images will be displayed here -->
     </div>
@@ -25,12 +28,27 @@
         // Function to display characters in the gallery
         function displayCharacters() {
             characters.forEach(character => {
+                const card = document.createElement('div');
+                card.style.display = 'inline-block';
+                card.style.textAlign = 'center';
+                card.style.margin = '15px';
+
                 const img = document.createElement('img');
                 img.src = character.image;
                 img.alt = character.name;
                 img.style.width = '200px';
+                img.style.borderRadius = '8px';
                 img.style.margin = '10px';
-                gallery.appendChild(img);
+                card.appendChild(img);
+                gallery.appendChild(card);
+
+                const name = document.createElement('p');
+                name.textContent = character.name;
+               name.style.fontWeight = 'bold';
+               
+               card.appendChild(img);
+               card.appendChild(name);
+               gallery
             });
         }
 
